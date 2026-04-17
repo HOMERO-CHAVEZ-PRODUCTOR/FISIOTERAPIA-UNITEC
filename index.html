@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRADUACIÓN | Fisioterapia UNITEC 2026</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Alata&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --unitec-green: #1a3024;   
+            --dark-bg: #050505;      
+            --ivory: #f8f9f5;      
+            --silver: #C0C0C2;          
+            --gold-unitec: #D6AD50; 
+            --white: #ffffff;
+        }
+
+        /* --- ARQUITECTURA BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body { 
+            background-color: var(--dark-bg); 
+            font-family: 'Inter', sans-serif;
+            color: var(--ivory); 
+            line-height: 1.6; 
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Fondo principal usando FFU.png */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('FFU.png');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.4; 
+            z-index: -1;
+        }
+
+        /* Títulos con color #D6AD50 */
+        h1, h2, h3 {
+            font-family: 'Alata', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: normal;
+            color: var(--gold-unitec);
+        }
+
+        /* --- ANIMACIONES --- */
+        @keyframes fadeInSimple {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- PORTADA --- */
+        header {
+            position: relative;
+            min-height: 100vh;
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            text-align: center;
+            padding: 50px;
+            opacity: 0;
+            animation: fadeInSimple 1.2s ease forwards;
+        }
+
+        header div:first-child {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, transparent 20%, var(--dark-bg) 95%);
+            z-index: 1;
+        }
+
+        header div:last-child { position: relative; z-index: 10; max-width: 800px; }
+        
+        header h1 { 
+            font-size: clamp(2.5rem, 8vw, 4.5rem); 
+            margin-bottom: 10px; 
+        }
+
+        header p { 
+            font-size: 1.1rem; 
+            letter-spacing: 6px; 
+            color: var(--silver); 
+            margin-bottom: 40px; 
+            font-weight: 300;
+        }
+
+        header hr { 
+            width: 100px; height: 1px; 
+            background: var(--silver); 
+            border: none;
+            margin: 0 auto; 
+        }
+
+        /* --- CONTENIDO PRINCIPAL --- */
+        main {
+            position: relative;
+            padding: 100px 20px;
+            text-align: center;
+            z-index: 100;
+            background: linear-gradient(to bottom, transparent, var(--unitec-green), var(--dark-bg));
+            opacity: 0;
+            animation: fadeInSimple 1.2s ease forwards 0.3s;
+        }
+
+        main div:first-child { 
+            max-width: 700px; 
+            margin: 0 auto 50px; 
+            font-size: 1.2rem; 
+            font-weight: 300; 
+            line-height: 2; 
+            color: var(--ivory);
+        }
+        
+        main div:nth-child(2) {
+            display: inline-flex;
+            gap: 30px;
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            padding: 20px 50px;
+            margin-bottom: 80px;
+            border-top: 1px solid var(--silver);
+            border-bottom: 1px solid var(--silver);
+            font-family: 'Alata', sans-serif;
+            color: var(--white);
+        }
+
+        /* --- UBICACIONES --- */
+        section {
+            max-width: 800px;
+            margin: 0 auto 100px;
+        }
+
+        section h3 { font-size: 2rem; margin-bottom: 15px; }
+        section p { font-size: 1.1rem; margin-bottom: 35px; color: var(--silver); }
+
+        section a {
+            display: inline-block;
+            padding: 18px 50px;
+            border: 1px solid var(--white);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.5s ease;
+        }
+
+        section a:hover { background: var(--white); color: var(--unitec-green); }
+
+        /* --- ITINERARIO --- */
+        article {
+            max-width: 700px;
+            margin: 100px auto;
+            padding: 0 20px;
+        }
+
+        article h3 { font-size: 2.2rem; margin-bottom: 60px; text-align: center; }
+
+        article div {
+            display: flex;
+            justify-content: space-between;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            align-items: center;
+        }
+
+        article span:first-child { font-weight: 600; color: var(--silver); min-width: 110px; text-align: left; }
+        article span:last-child { text-align: right; font-weight: 300; }
+
+        /* --- RECOMENDACIONES --- */
+        aside {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            padding: 100px 20px;
+            max-width: 1100px;
+            margin: 0 auto;
+            opacity: 0;
+            animation: fadeInSimple 1.2s ease forwards 0.6s;
+        }
+
+        aside div {
+            padding: 35px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            text-align: left;
+        }
+
+        aside strong { 
+            display: block; 
+            margin-bottom: 10px; 
+            font-family: 'Alata', sans-serif; 
+            text-transform: uppercase; 
+            font-size: 1rem;
+            color: var(--gold-unitec);
+        }
+
+        aside p { font-size: 0.95rem; font-weight: 300; color: var(--silver); }
+
+        /* --- BOTÓN MÚSICA --- */
+        #music-btn {
+            position: fixed; bottom: 30px; right: 30px; width: 60px; height: 60px;
+            border-radius: 50%; z-index: 2000; border: 1px solid var(--silver);
+            background: rgba(0, 0, 0, 0.8); cursor: pointer;
+            display: flex; align-items: center; justify-content: center; font-size: 1.2rem;
+            transition: 0.3s; color: var(--white);
+        }
+
+        #music-btn:hover { border-color: var(--white); transform: scale(1.05); }
+
+        /* --- FOOTER --- */
+        footer { 
+            padding: 80px 20px; 
+            text-align: center; 
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        footer h2 { font-size: 1.8rem; margin-bottom: 5px; }
+        footer p { letter-spacing: 3px; opacity: 0.5; font-size: 0.8rem; }
+
+        @media (max-width: 768px) {
+            main div:nth-child(2) { gap: 15px; padding: 15px 30px; }
+            article div { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <audio id="gradAudio" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+    <button id="music-btn" onclick="toggleMusic()">🔇</button>
+
+    <header>
+        <div></div>
+        <div>
+            <h1>Fisioterapia</h1>
+            <p>UNITEC | CLASE 2026</p>
+            <hr>
+        </div>
+    </header>
+
+    <main>
+        <div>
+            Nos complace invitarles a la celebración de graduación de la Licenciatura en Fisioterapia. Un evento solemne para conmemorar el esfuerzo y la culminación de nuestra formación académica.
+        </div>
+
+        <div>
+            <span>21</span> <span>03</span> <span>26</span>
+        </div>
+
+        <section>
+            <h3>Hacienda Tejalpa</h3>
+            <p>Sede de la Recepción</p>
+            <a href="https://www.google.com/maps/place/HACIENDA+TEJALPAEx+Hacienda+Tejalpa/@19.2517686,-99.7687484,1031m/data=!3m2!1e3!4b1!4m6!3m5!1s0x85cd865640467143:0xbe4030fae78b4268!8m2!3d19.2517686!4d-99.7661735!16s%2Fg%2F11c534lzk8?entry=ttu&g_ep=EgoyMDI2MDQxNC4wIKXMDSoASAFQAw%3D%3D" target="_blank">Ver Ubicación</a>
+        </section>
+
+        <article>
+            <h3>Itinerario</h3>
+            <div><span>07:00 PM</span><span>RECEPCION</span></div>
+            <div><span>07:30 PM</span><span>CENA</span></div>
+            <div><span>08:35 PM</span><span>PALABRAS</span></div>
+            <div><span>08:40 PM</span><span>BRINDIS</span></div>
+            <div><span>08:45 PM</span><span>SE ABRE PISTA</span></div>
+            <div><span>09:45 PM</span><span>CARRITO DE SHOTS</span></div>
+            <div><span>12:00 AM</span><span>TORNAFIESTA</span></div>
+            <div><span>12:30 AM</span><span>NORTEÑO</span></div>
+            <div><span>12:30 AM</span><span>AFTER</span></div>
+            <div><span>01:00 AM</span><span>BARRA DE BEBIDAS</span></div>
+            <div><span>02:00 AM</span><span>SORPRESA ANIMADA (SOPAS)</span></div>
+            <div><span>03:00 AM</span><span>FINI</span></div>
+            <div><span>03:00 AM</span><span>DESALOJO</span></div>
+        </article>
+    </main>
+
+    <aside>
+        <div>
+            <strong>CLIMA Y PROTECCIÓN</strong>
+            <p>Le sugerimos encarecidamente tomar precauciones e ir abrigados ante el clima del lugar.</p>
+        </div>
+        <div>
+            <strong>ACCESO ÚNICO</strong>
+            <p>Considere que el recinto cuenta con un solo acceso habilitado para la entrada.</p>
+        </div>
+        <div>
+            <strong>VALET PARKING</strong>
+            <p>Servicio externo a HC, con costo adicional por auto.</p>
+        </div>
+        <div>
+            <strong>ÁREAS DE FUMAR</strong>
+            <p>Recordamos que el consumo de tabaco está restringido exclusivamente a las áreas exteriores.</p>
+        </div>
+        <div>
+            <strong>MENÚS ESPECIALES</strong>
+            <p>Si requiere menú vegano, vegetariano o por alergias, solicítelo directamente con el comité organizador en la selección de mesas.</p>
+        </div>
+        <div>
+            <strong>KIT Y GUARDARROPA</strong>
+            <p>No hay servicio de guardarropa. El kit de graduado será entregado en la entrada.</p>
+        </div>
+    </aside>
+
+    <footer>
+        <h2>Fisioterapia UNITEC</h2>
+        <p>GENERACIÓN 2026</p>
+    </footer>
+
+    <script>
+        const audio = document.getElementById('gradAudio');
+        function toggleMusic() {
+            const btn = document.getElementById('music-btn');
+            if (audio.paused) {
+                audio.play();
+                btn.innerHTML = "🔊";
+            } else {
+                audio.pause();
+                btn.innerHTML = "🔇";
+            }
+        }
+    </script>
+</body>
+</html>
